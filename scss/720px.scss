@@ -1,0 +1,58 @@
+@media (min-width: 720px)  {
+
+  h1 {
+    font-size: 3em;
+  }
+
+  h2 {
+    font-size: 2.3em;
+  }
+
+  h3 {
+    font-size: 1.4em;
+  }
+
+  h4 {
+    font-size: 1.3em;
+  }
+
+  h5 {
+    font-size: 1em;
+  }
+
+  .header__claim {
+    margin: 30vh 0 2vh;
+  }
+
+  .about__text,
+  .portfolio__text,
+  .contact__text {
+    text-align: center;
+    max-width: 70vw;
+    margin: 0 auto;
+  }
+
+  .castle__text {
+    max-width: 60vw;
+    margin: 0 auto;
+  }
+
+  .gallery__photo {
+    width: 40em;
+    height: 30em;
+  }
+
+  .contact__contacts {
+    display: flex;
+    justify-content: center;
+
+    ul {
+      width: 55%;
+      display: flex;
+      justify-content: space-around;
+      align-items: flex-start;
+      flex-direction: row;
+    }
+  }
+
+}

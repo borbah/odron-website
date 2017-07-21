@@ -2,7 +2,7 @@
 
 let vh = window.innerHeight;
 let vw = window.innerWidth;
-let isMobile = vw <= 1000;
+let isMobile = vw < 1000;
 
 const galleryHolder = document.querySelector('.gallery__holder');
 const showMoreButton = document.querySelector('.gallery__show-more');
@@ -27,7 +27,7 @@ function createImage(number) {
  return galleryPhoto;
 }
 
-// scrollToHash function
+// scroll to hash 
 $('a[href^="#"]').on('click',function (e) {
     e.preventDefault();
 
@@ -46,14 +46,20 @@ function showMore() {
     let liCounter = document.querySelectorAll('.gallery__photo');
 
     if(liCounter.length < 16) {
-        for(let i = liCounter.length+1; i < liCounter.length+5; i++) {
+        for (let i = liCounter.length + 1; i < liCounter.length + 5; i++) {
             galleryHolder.appendChild(createImage(i));
+
         }
-    } else {
-        showMoreButton.innerText = 'To już wszystko!';
-        showMoreButton.style.color = '#919191';
-        showMoreButton.style.border = '2px solid #919191';
+        if (liCounter.length > 10) {
+            showMoreButton.style.opacity = 0;
+            showMoreButton.remove();
+        }
     }
+    // } else {
+    //     showMoreButton.innerText = 'To już wszystko!';
+    //     showMoreButton.style.color = '#919191';
+    //     showMoreButton.style.border = '2px solid #919191';
+    // }
 }
 
 // show only 4 thumbnails first o mobile
@@ -63,7 +69,7 @@ if(isMobile) {
     }
 
 } else {
-    for(let i = 1; i < 16; i++) {
+    for(let i = 1; i < 17; i++) {
         galleryHolder.appendChild(createImage(i));
     }
 }
