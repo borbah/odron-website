@@ -2,7 +2,7 @@
 
 let vh = window.innerHeight;
 let vw = window.innerWidth;
-let isMobile = vw < 1000;
+let isMobile = vw < 1100;
 
 const galleryHolder = document.querySelector('.gallery__holder');
 const showMoreButton = document.querySelector('.gallery__show-more');

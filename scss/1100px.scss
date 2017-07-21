@@ -7,19 +7,21 @@
   .about {
     height: 80vh;
     display: flex;
-    justify-content: center;
     align-items: center;
     flex-direction: row;
-    flex-wrap: nowrap;
+    justify-content: center;
   }
 
   .about__text {
-    padding-left: 2em;
     text-align: left;
+    max-width: 30em;
+    margin: 0;
   }
 
   .about__icons {
-    
+    margin: 0;
+    max-width: 35em;
+
     ul {
       display: flex;
       flex-direction: column;
@@ -49,7 +51,7 @@
   }
 
   .castle__text {
-    margin: 0 5em 0 0;
+    margin: 0 3em 0 0;
     max-width: 38vw;
     text-align: left;
 
@@ -58,9 +60,25 @@
     }
   }
 
-  .portfolio__text {
+  .portfolio__text,
+  .contact__text{
     padding: 0;
-    max-width: 50vw;
+    width: 30em;
+  }
+
+  .gallery__photo {
+    width: 20em;
+    height: 12em;
+  }
+
+  .gallery__show-more {
+    display: none;
+  }
+
+  .contact__contacts {
+    ul {
+      width: 40vw;
+    }
   }
 
 }
