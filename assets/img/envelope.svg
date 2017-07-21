@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="88px" height="74px" viewBox="0 0 88 74" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 45.2 (43514) - http://www.bohemiancoding.com/sketch -->
+    <title>envelope</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="5.97464789" width="83.0561798" height="67.4253521" rx="11.88"></rect>
+        <rect id="path-2" x="0.943820225" y="0" width="83.0561798" height="67.4253521" rx="11.88"></rect>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Desktop" transform="translate(-759.000000, -3420.000000)">
+            <g id="Group-4" transform="translate(352.000000, 3409.000000)">
+                <g id="Group-6" transform="translate(407.000000, 11.000000)">
+                    <g id="Group-7">
+                        <g id="envelope">
+                            <g id="Rectangle-7">
+                                <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-1"></use>
+                                <rect stroke="#90D9F8" stroke-width="8.91" x="4.455" y="10.4296479" width="74.1461798" height="58.5153521" rx="11.88"></rect>
+                            </g>
+                            <g id="Group-10" transform="translate(4.000000, 0.000000)">
+                                <g id="Rectangle-7">
+                                    <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-2"></use>
+                                    <rect stroke="#2D2929" stroke-width="2.97" x="2.42882022" y="1.485" width="80.0861798" height="64.4553521" rx="11.88"></rect>
+                                </g>
+                                <polyline id="Path-4" stroke="#2D2929" stroke-width="2.97" points="2.42696629 10.9070423 42.4719101 32.7211268 82.5168539 10.9070423"></polyline>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
