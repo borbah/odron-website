@@ -1,14 +1,31 @@
 /*jshint esversion: 6 */
+'use strict';
 
 let vh = window.innerHeight;
 let vw = window.innerWidth;
-let isMobile = vw < 1100;
 
+// scroll to hash
+$('a[href^="#"]').on('click',function (e) {
+    e.preventDefault();
+
+    let target = this.hash;
+    let $target = $(target);
+
+    $('html, body').stop().animate({
+        'scrollTop': $target.offset().top
+    }, 900, 'swing', function () {
+        window.location.hash = target;
+    });
+});
+
+/*
+    Gallery component
+*/
+
+let isMobile = vw < 1100;
 const galleryHolder = document.querySelector('.gallery__holder');
 const showMoreButton = document.querySelector('.gallery__show-more');
 
-// set header height (prevents from transitioning on mobile)
-$('.header').height(vh);
 
 // image thumbnail component
 function createImage(number) {
@@ -27,19 +44,13 @@ function createImage(number) {
  return galleryPhoto;
 }
 
-// scroll to hash 
-$('a[href^="#"]').on('click',function (e) {
-    e.preventDefault();
+// show fullsize picture
+$('.gallery__photo').on('click', function(e) {
+   let elIndex = $(this).index();
 
-    let target = this.hash;
-    let $target = $(target);
-
-    $('html, body').stop().animate({
-        'scrollTop': $target.offset().top
-    }, 900, 'swing', function () {
-        window.location.hash = target;
-    });
+   console.log(elIndex);
 });
+
 
 // showMore function – displays 4 next photos in portfolio
 function showMore() {
@@ -55,11 +66,6 @@ function showMore() {
             showMoreButton.remove();
         }
     }
-    // } else {
-    //     showMoreButton.innerText = 'To już wszystko!';
-    //     showMoreButton.style.color = '#919191';
-    //     showMoreButton.style.border = '2px solid #919191';
-    // }
 }
 
 // show only 4 thumbnails first o mobile
@@ -67,11 +73,33 @@ if(isMobile) {
     for(let i = 1; i < 5; i++) {
         galleryHolder.appendChild(createImage(i));
     }
-
+    showMoreButton.addEventListener('click', showMore);
 } else {
     for(let i = 1; i < 17; i++) {
         galleryHolder.appendChild(createImage(i));
     }
 }
 
-showMoreButton.addEventListener('click', showMore);
+
+
+
+/*
+* EFFECTS & ANIMATIONS
+* */
+let header = $('.header');
+// set header height (prevents from transitioning on mobile)
+header.height(vh);
+
+// hamburger menu toggle
+let headerHamburger = $('.header__hamburger');
+let headerMenu = $('.header__menu');
+
+headerHamburger.on('click', function() {
+    headerHamburger.toggleClass('header__hamburger--open');
+    headerMenu.toggleClass('header__menu--open');
+});
+
+$('.header__menu li').on('click', function() {
+    headerMenu.removeClass('header__menu--open');
+    headerHamburger.removeClass('header__hamburger--open');
+});

@@ -16,7 +16,6 @@ var gulp   = require('gulp'),
     cssPub = 'css';
 
 
-
 // configure the jshint task
 gulp.task('jshint', function() {
   return gulp.src(jsSrc)

@@ -2,6 +2,40 @@
 
   .button {
     width: 13.5em;
+    transition: .2s ease-out;
+  }
+
+  .button:hover {
+    transform: translate(.3em, -.3em);
+    box-shadow: -.3em .3em 0 rgba(82, 198, 246, .8);
+  }
+
+  .header {
+    background-position: initial;
+  }
+
+  .header__logo {
+    width: 5em;
+  }
+
+  .header__hamburger {
+    display: none;
+  }
+
+  // changing menu appearence for desktop
+  .header__menu {
+    background: none;
+    position: initial;
+    height: auto;
+    width: 17em;
+    visibility: visible;
+    opacity: 1;
+    flex-direction: row;
+    justify-content: space-between;
+
+    li {
+      font-size: .9em;
+    }
   }
 
   .about {
@@ -63,12 +97,19 @@
   .portfolio__text,
   .contact__text{
     padding: 0;
-    width: 30em;
+    width: 32em;
   }
 
   .gallery__photo {
     width: 20em;
     height: 12em;
+    border-radius: 2px;
+    transition: .2s ease-in-out;
+  }
+
+  .gallery__photo:hover {
+    transform: translate(.2em,-.2em);
+    box-shadow: -.2em .2em 0 rgba(82, 198, 246, .5);
   }
 
   .gallery__show-more {

@@ -1,6 +1,8 @@
 $mont: 'Montserrat', sans-serif;
-$myBlue: rgb(82, 198, 246);
 $fontratio: 1.333;
+$myBlue: rgb(82, 198, 246);
+
+#__bs_notify__ { top:95% !important; right: 10px !important; border-radius: 15px !important; height:60px !important; }
 
 html {
   font-size: 16px;
@@ -70,11 +72,7 @@ p {
 
 .header {
   width: 100vw;
-  background-image: linear-gradient(
-                  rgba(0, 0, 0, 0),
-                  rgba(30, 30, 30, 0.3)
-  ),
-  url('../assets/img/header__backgroundphoto.png');
+  background-image: url('../assets/img/header__backgroundphoto.png');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -96,19 +94,22 @@ p {
 }
 
 .header__menu {
-  display: none;
+  display: flex;
+  visibility: hidden;
+  opacity: 0;
 
   margin: 0;
   padding: 0;
   top: 0;
   left: 0;
-  height: 100vh;
+  height: 105vh;
   width: 100vw;
   position: absolute;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   background: rgba(0, 0, 0, .9);
+  transition: visibility .3s, opacity .3s .1s ease-out;
 
   li {
     list-style: none;
@@ -122,12 +123,54 @@ p {
   }
 }
 
+.header__menu--open {
+  visibility: visible;
+  opacity: 1;
+}
+
 .header__hamburger {
-  fill: white;
-  border: none;
-  background: none;
+  width: 35px;
+  height: 36px;
   margin: 0;
   padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  span {
+    display: block;
+    width: 30px;
+    height: 2px;
+    margin: 2px;
+    background: white;
+  }
+
+  span:nth-child(1),
+  span:nth-child(3) {
+    transition: 0.3s ease-out .2s;
+  }
+
+  span:nth-child(2) {
+    transition: .5s ease-in-out;
+  }
+}
+
+.header__hamburger--open {
+
+  span:nth-child(2) {
+    transform: rotate(560deg);
+    opacity: 0;
+
+  }
+
+  span:nth-child(1) {
+    transform: translate(0, 6px) rotate(225deg);
+  }
+
+  span:nth-child(3) {
+    transform: translate(0, -6px) rotate(-225deg);
+  }
 }
 
 // navbar ends
@@ -253,7 +296,7 @@ p {
 .gallery__photo {
   width: 25em;
   height: 13em;
-  background: grey;
+  background: #e4e4e4;
   margin: .5em;
   background-repeat:  no-repeat;
   background-size: cover;
@@ -341,3 +384,6 @@ footer {
 
 @import '720px';
 @import '1100px';
+@import '1400px';
+@import '1400px';
+@import '1800px';
