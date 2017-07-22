@@ -94,6 +94,35 @@
     }
   }
 
+  .portfolio__fullphoto {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: visibility .3s, opacity .3s .1s ease-out;
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    left: 0;
+    right: 0;
+    background: rgba(255,255,255, .5);
+    width: 100vw;
+    height: 100vh;
+    margin: 0 auto;
+    border-radius: 5px;
+    padding: 0;
+
+    img {
+      width: 70%;
+      border-radius: 3px;
+      box-shadow: 0 0 20px rgba(0,0,0, .2);
+    }
+  }
+
+  .portfolio__fullphoto--open {
+    visibility: visible;
+    opacity: 1;
+  }
+
   .portfolio__text,
   .contact__text{
     padding: 0;

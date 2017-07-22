@@ -2,8 +2,6 @@ $mont: 'Montserrat', sans-serif;
 $fontratio: 1.333;
 $myBlue: rgb(82, 198, 246);
 
-#__bs_notify__ { top:95% !important; right: 10px !important; border-radius: 15px !important; height:60px !important; }
-
 html {
   font-size: 16px;
 }
@@ -109,7 +107,7 @@ p {
   align-items: center;
   flex-direction: column;
   background: rgba(0, 0, 0, .9);
-  transition: visibility .3s, opacity .3s .1s ease-out;
+  transition: visibility .3s, opacity .3s .1s ease-in-out;
 
   li {
     list-style: none;
