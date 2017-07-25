@@ -13,6 +13,7 @@ var gulp   = require('gulp'),
 
     jsSrc = 'js/**/*.js',
     scssSrc = 'scss/*.scss',
+    mainScss = 'scss/main.scss',
     cssPub = 'css';
 
 
@@ -25,15 +26,12 @@ gulp.task('jshint', function() {
 
 // configure the sass task
 gulp.task('sass', function() {
-  return gulp.src(scssSrc)
+  return gulp.src(mainScss)
 
     .pipe(plumber({errorHandler: notify.onError("Error: <%= error.message %>")}))
     .pipe(sourcemaps.init())
     .pipe(sass().on('error', sass.logError))
-    .pipe(autoprefixer({
-          browsers: ['last 4 versions'],
-          cascade: false
-    }))
+    .pipe(autoprefixer('last 4 version'))
     .pipe(sourcemaps.write())
     .pipe(cleanCSS({compatibility: '*'}))
     .pipe(gulp.dest(cssPub))

@@ -2,6 +2,14 @@ $mont: 'Montserrat', sans-serif;
 $fontratio: 1.333;
 $myBlue: rgb(82, 198, 246);
 
+@import 'keyframes';
+@import 'normalize';
+
+body:not(.show-focus-outlines) button:focus,
+body:not(.show-focus-outlines) [tabindex]:focus {
+  outline: none;
+}
+
 html {
   font-size: 16px;
 }
@@ -31,17 +39,20 @@ h2 {
   margin-top: .3em;
 }
 
-h3 {
-  font-size: 1.1em;
+.subclaim-3 {
+  font-size: 1.35em;
+  font-weight: 600;
 }
 
-h4 {
+.subclaim-4 {
+  font-weight: 600;
   font-size: 1.15em;
   margin-bottom: 0;
 }
 
-h5 {
+.subclaim-5 {
   font-size: 0.9em;
+  font-weight: 600;
 }
 
 p {
@@ -69,7 +80,7 @@ p {
 }
 
 .header {
-  width: 100vw;
+  width: 100%;
   background-image: url('../assets/img/header__backgroundphoto.png');
   background-repeat: no-repeat;
   background-size: cover;
@@ -101,7 +112,7 @@ p {
   top: 0;
   left: 0;
   height: 105vh;
-  width: 100vw;
+  width: 100%;
   position: absolute;
   justify-content: center;
   align-items: center;
@@ -127,10 +138,13 @@ p {
 }
 
 .header__hamburger {
+  z-index: 999;
+  background: none;
+  border: none;
   width: 35px;
   height: 36px;
   margin: 0;
-  padding: 0;
+  padding: 5px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -188,12 +202,13 @@ p {
 // end of header section
 
 .about {
-  padding: 1.2em;
+  padding: 0;
   height: auto;
+  overflow: hidden;
 }
 
 .about__text {
-  margin: 3em 0;
+  margin: 3em 1.2em;
 }
 
 .about__icons {
@@ -206,16 +221,35 @@ p {
     padding: 0;
 
     li {
+      position: relative;
       padding: 0;
       margin: 3em 0;
+      left: 100vw;
+      animation-duration: 1s;
+      animation-timing-function: ease-in-out;
+      animation-fill-mode: forwards;
 
-      h5 {
-        margin-bottom: 0;
+      p.subclaim-5 {
+        margin: 1.5em 0 0 0;
       }
 
-      h3 {
-        margin-top: .3em;
+      p.subclaim-3 {
+        margin: .1em 0 0 0;
       }
+
+
+    }
+
+    li:nth-child(1) {
+      animation-delay: 0s;
+    }
+
+    li:nth-child(2) {
+      animation-delay: .3s;
+    }
+
+    li:nth-child(3) {
+      animation-delay: .6s;
     }
 
     li::before {
@@ -232,15 +266,19 @@ p {
   }
 }
 
-.about__first-item::before {
+.animate {
+  animation-name: lazyIcons;
+}
+
+.about__list-item:nth-child(1)::before {
   background-image: url('../assets/img/cloud.svg');
 }
 
-.about__second-item::before {
+.about__list-item:nth-child(2)::before {
   background-image: url('../assets/img/camera.svg');
 }
 
-.about__third-item::before {
+.about__list-item:nth-child(3)::before {
   background-image: url('../assets/img/certif.svg');
 }
 
@@ -248,14 +286,16 @@ p {
 
 .castle {
   padding: 1.2em;
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   background-image: linear-gradient(180deg,
           rgba(255, 255, 255, 0) -100%,
           rgba(0, 0, 0, .5) 60%
   ),
   url('../assets/img/castle.png');
+  background-size: cover;
   background-position: 70%;
+  background-repeat: no-repeat;
   display: flex;
   align-items: center;
 }
@@ -277,6 +317,12 @@ p {
   padding: 0 1.2em;
 }
 
+.fullphoto {
+  button {
+    display: none;
+  }
+}
+
 .gallery {
   margin: 0 auto;
   width: 100%;
@@ -292,6 +338,7 @@ p {
 }
 
 .gallery__photo {
+  cursor: pointer;
   width: 25em;
   height: 13em;
   background: #e4e4e4;
@@ -306,6 +353,7 @@ p {
 }
 
 .gallery__show-more {
+  cursor: pointer;
   background: white;
   color: black;
   border: 2px solid black;
@@ -324,7 +372,7 @@ p {
 }
 
 .contact__contacts {
-  width: 100vw;
+  width: 100%;
 
   ul {
     width: 100%;

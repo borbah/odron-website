@@ -1,7 +1,80 @@
-/*jshint esversion: 6 */
+(function(){
 
-let vh = window.innerHeight;
-let vw = window.innerWidth;
+// window parameters
+let vh = window.innerHeight,
+    vw = window.innerWidth,
+    isMobile = vw < 1100;
+
+let body = $('body'),
+    header = $('.header'),
+    headerHamburger = $('.header__hamburger'),
+    headerMenu = $('.header__menu'),
+    headerMenuLi = $('.header__menu li'),
+    aboutIconsUlLi = $('.about__icons ul li'),
+    galleryHolder = document.querySelector('.gallery__holder'),
+    showMoreButton = document.querySelector('.gallery__show-more'),
+    galleryPhotoSelector = $('.gallery__photo'),
+    fullphoto = $('.portfolio__fullphoto'),
+    fullphotoDynamicChange = $('.fullphoto__dynamic-change'),
+    fullphotoButton = $('.portfolio__fullphoto button'),
+    fullphotoButtonFirst = $('.portfolio__fullphoto button:first-child'),
+    fullphotoButtonLast = $('.portfolio__fullphoto button:last-child');
+
+
+// set header height (prevents from transitioning on mobile)
+    header.height(vh);
+
+// hamburger menu toggle
+
+    headerHamburger.on('click', function() {
+        headerHamburger.toggleClass('header__hamburger--open');
+        headerMenu.toggleClass('header__menu--open');
+    });
+
+    function noscroll() {
+        window.scrollTo( 0, 0);
+    }
+
+    window.addEventListener('scroll', function() {
+        if(headerMenu.hasClass('header__menu--open')) {
+            noscroll();
+        } else {
+            window.removeEventListener('scroll', noscroll);
+        }
+    });
+
+
+    headerMenuLi.on('click', function() {
+        headerMenu.removeClass('header__menu--open');
+        headerHamburger.removeClass('header__hamburger--open');
+    });
+
+// Accesibility – show focus only when tabbed
+document.addEventListener('keydown', function(e) {
+    if (e.keyCode === 9) {
+        body.addClass('show-focus-outlines');
+    }
+});
+
+document.addEventListener('click', function(e) {
+    body.removeClass('show-focus-outlines');
+});
+
+
+// lazy load icons
+$(window).scroll(function () {
+
+    if (isMobile) {
+        if ($(window).scrollTop() > vh) {
+            aboutIconsUlLi.addClass('animate');
+        }
+    } else {
+        if ($(window).scrollTop() > vh - vh/3) {
+            aboutIconsUlLi.addClass('animate');
+        }
+    }
+});
+
 
 // scroll to hash
 $('a[href^="#"]').on('click',function (e) {
@@ -21,12 +94,7 @@ $('a[href^="#"]').on('click',function (e) {
     Gallery component
 */
 
-let isMobile = vw < 1100;
-const galleryHolder = document.querySelector('.gallery__holder');
-const showMoreButton = document.querySelector('.gallery__show-more');
-
-
-// image thumbnail component
+// image thumbnail
 function createImage(number) {
  let src = './assets/img/photos/thumbnails/';
 
@@ -67,32 +135,35 @@ if(isMobile) {
     }
     showMoreButton.addEventListener('click', showMore);
 } else {
+    // show all photos
     for (let i = 1; i < 17; i++) {
         galleryHolder.appendChild(createImage(i));
     }
 
 
     $('.gallery__photo').on('click', function() {
-        $('.portfolio__fullphoto img').attr('src', '');
+        fullphotoDynamicChange.attr('src', '');
        let elIndex = $(this).index() + 1;
        let src = `./assets/img/photos/${elIndex}.jpg`;
-       $('.portfolio__fullphoto img').attr('src', src);
-       let fullPhoto = $('.portfolio__fullphoto');
+
+        fullphotoDynamicChange.attr('src', src);
        let userView = window.pageYOffset;
-       fullPhoto.offset({top: userView});
-       fullPhoto.addClass('portfolio__fullphoto--open');
+        fullphoto.offset({top: userView});
+        fullphoto.addClass('portfolio__fullphoto--open');
     });
 
-    $('.portfolio__fullphoto').on('click', function() {
-       $(this).removeClass('portfolio__fullphoto--open');
+    fullphoto.on('click', function() {
+        if(!(fullphotoButton.is(':focus')))
+         {
+           $(this).removeClass('portfolio__fullphoto--open');
+         }
+
     });
 
-    window.addEventListener('keydown', keyImgChange, true);
-
-
+    //
 
     function changeImage(number) {
-        let portfolioImg = $('.portfolio__fullphoto img'),
+        let portfolioImg = fullphotoDynamicChange,
             currentSrc = portfolioImg.attr('src').toString(),
             regex = /\d+/,
             numArr = currentSrc.match(regex),
@@ -101,54 +172,50 @@ if(isMobile) {
 
         let src = `./assets/img/photos/${change}.jpg`;
 
-        console.log(num);
+        return src
+    }
 
-        if (num < 2 || num > 15) {
-            console.log('end of photos');
-            $('.portfolio__fullphoto').removeClass('portfolio__fullphoto--open');
+    // Close gallery if there is no such photo ( error 404 )
+
+    window.addEventListener('error', function(e) {
+        console.log(e);
+        if (e.path[1].className === 'portfolio__fullphoto fullphoto portfolio__fullphoto--open') {
+            console.log('removing...');
+            fullphoto.removeClass('portfolio__fullphoto--open');
             return null;
         }
+    }, true);
 
-        return src
-
-    }
+    // Switch photos with keyboard arrows
 
     function keyImgChange(e) {
         let keycode = e.keyCode;
 
-        if($('.portfolio__fullphoto').hasClass('portfolio__fullphoto--open')) {
+        if(fullphoto.hasClass('portfolio__fullphoto--open')) {
             if(keycode === 37) {
-                $('.portfolio__fullphoto img').attr('src', changeImage(-1));
+                fullphotoDynamicChange.attr('src', changeImage(-1));
 
             } else if (keycode === 39) {
 
-                $('.portfolio__fullphoto img').attr('src', changeImage(1));
+                fullphotoDynamicChange.attr('src', changeImage(1));
 
+            } else if (keycode === 27) {
+                fullphoto.removeClass('portfolio__fullphoto--open');
             }
         }
     }
+
+    // Add function to arrow buttons in portfolio
+
+    window.addEventListener('keydown', keyImgChange, true);
+
+    fullphotoButtonFirst.on('click', function() {
+        fullphotoDynamicChange.attr('src', changeImage(-1));
+    });
+
+    fullphotoButtonLast.on('click', function() {
+        fullphotoDynamicChange.attr('src', changeImage(1));
+    });
 }
+}());
 
-
-
-
-/*
-* EFFECTS & ANIMATIONS
-* */
-let header = $('.header');
-// set header height (prevents from transitioning on mobile)
-header.height(vh);
-
-// hamburger menu toggle
-let headerHamburger = $('.header__hamburger');
-let headerMenu = $('.header__menu');
-
-headerHamburger.on('click', function() {
-    headerHamburger.toggleClass('header__hamburger--open');
-    headerMenu.toggleClass('header__menu--open');
-});
-
-$('.header__menu li').on('click', function() {
-    headerMenu.removeClass('header__menu--open');
-    headerHamburger.removeClass('header__hamburger--open');
-});

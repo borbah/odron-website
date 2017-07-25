@@ -1,36 +1,53 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-    <meta charset="UTF-8">
+
+
+    <meta charset="UTF-8" />
     <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+
     <title>O!Dron – realizacje wysokich lotów</title>
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="css/normalize.css">
-    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <meta name="description" content="Filmujemy, fotografujemy, tworzymy relacje na żywo – i
+    to wszystko z powietrza! Czas na zmianę perspektywy."/>
+
+    <meta property="og:description" content="Filmujemy, fotografujemy, tworzymy relacje na żywo – a
+    to wszystko z powietrza! Czas na zmianę perspektywy.">
+    <meta property="og:title" content="O!Dron – realizacje wysokich lotów">
+    <meta property="og:image" content="http://o-dron.pl/assets/img/og_photo.jpg">
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:url" content="http://">
+    <meta property="og:type" content="website" />
+
+    <link rel="icon" type="image/png" href="assets/img/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="assets/img/favicon-16x16.png" sizes="16x16" />
+
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600" rel="stylesheet" />
+    <link rel="stylesheet"  href="css/main.css" />
 </head>
 <body>
 <header class="header">
     <nav class="header__navbar">
         <a class="header__logo" href="#"><img src="assets/img/logo.svg"></a>
+        <button class="header__hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
         <ul class="header__menu">
-            <li><a href="#about">Oferta</a></li>
+            <li><a href="#o-nas">Oferta</a></li>
             <li><a href="#portfolio">Portfolio</a></li>
-            <li><a href="#contact">Kontakt</a></li>
+            <li><a href="#kontakt">Kontakt</a></li>
         </ul>
-        <div class="header__hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-        </div>
     </nav>
     <h1 class="header__claim">Realizacje wysokich lotów</h1>
-    <h3 class="header__subclaim">postaw na profesjonalizm – wybierz filmy i zdjęcia najwyższej jakości</h3>
-    <a href="#about" class="button">Sprawdź ofertę</a>
+    <p class="header__subclaim subclaim-3">postaw na profesjonalizm – wybierz filmy i zdjęcia najwyższej jakości</p>
+    <a href="#o-nas" class="button">Sprawdź ofertę</a>
 </header>
-<section id="about" class="about">
+<section id="o-nas" class="about">
     <div class="about__text">
-        <h4>GDZIE LECIMY?</h4>
+        <p class="subclaim-4">GDZIE LECIMY?</p>
         <h2>Wszędzie tam, gdzie chcesz!</h2>
         <p>Filmujemy, fotografujemy, tworzymy relacje
             na żywo – i to wszystko z powietrza!
@@ -42,18 +59,18 @@
     </div>
     <div class="about__icons">
         <ul>
-            <li class="about__first-item"><h5>DOBRZE OBLATANI</h5>
-                <h3>Ponad 120 godzin w powietrzu za nami</h3></li>
-            <li class="about__second-item"><h5>SPRZĘT WYSOKICH LOTÓW</h5>
-                <h3>DJI Phantom 4 z kamerą UltraHD 4K</h3></li>
-            <li class="about__third-item"><h5>ODLOTOWI SPECJALIŚCI</h5>
-                <h3>Certyfikowany operator drona UAVO</h3></li>
+            <li class="about__list-item"><p class="subclaim-5">DOBRZE OBLATANI</p>
+                <p class="subclaim-3">Ponad 120 godzin w powietrzu za nami</p></li>
+            <li class="about__list-item"><p class="subclaim-5">SPRZĘT WYSOKICH LOTÓW</p>
+                <p class="subclaim-3">DJI Phantom 4 z kamerą UltraHD 4K</p></li>
+            <li class="about__list-item"><p class="subclaim-5">ODLOTOWI SPECJALIŚCI</p>
+                <p class="subclaim-3">Certyfikowany operator drona UAVO</p></li>
         </ul>
     </div>
 </section>
-<section class="castle">
+<section id="zmien-perspektywe" class="castle">
     <div class="castle__text">
-        <h4>LOTY GODNE POLECENIA</h4>
+        <p class="subclaim-4">LOTY GODNE POLECENIA</p>
         <h2>Zmień perspektywę!</h2>
         <p>Zdjęcia i filmy wykonywane z lotu ptaka to wyjątkowa pamiątka,
             to fotografowanie osób, obiektów lub zdarzeń z perspektywy,
@@ -64,7 +81,7 @@
 </section>
 <section id="portfolio" class="portfolio">
     <div class="portfolio__text">
-        <h4>PRACA Z POLOTEM</h4>
+        <p class="subclaim-4">PRACA Z POLOTEM</p>
         <h2>Nasze portfolio</h2>
         <p>Specjalizujemy się w fotografii i filmowaniu zawodów
             konnych, treningów, stajni, a także imprez masowych
@@ -79,13 +96,15 @@
         </ul>
         <a class="gallery__show-more button">Pokaż więcej</a>
     </div>
-    <div class="portfolio__fullphoto">
-        <img>
+    <div class="portfolio__fullphoto fullphoto">
+        <button><img src="./assets/img/back.svg"></button>
+        <img class="fullphoto__dynamic-change" src="">
+        <button><img src="./assets/img/next.svg"></button>
     </div>
 </section>
-<section id="contact" class="contact">
+<section id="kontakt" class="contact">
     <div class="contact__text">
-        <h4>POLEĆMY GDZIEŚ</h4>
+        <p class="subclaim-4">POLEĆMY GDZIEŚ</p>
         <h2>Czekamy na kontakt!</h2>
         <p>Każde zlecenie to dla nas pasjonujące
             wyzwanie! Opowiedz nam o swoim pomyśle,
