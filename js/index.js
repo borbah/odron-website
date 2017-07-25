@@ -5,6 +5,9 @@ let vh = window.innerHeight,
     vw = window.innerWidth,
     isMobile = vw < 1100;
 
+
+// DOM variables (used for not duplicating jquery selectors)
+
 let body = $('body'),
     header = $('.header'),
     headerHamburger = $('.header__hamburger'),
@@ -30,6 +33,9 @@ let body = $('body'),
         headerHamburger.toggleClass('header__hamburger--open');
         headerMenu.toggleClass('header__menu--open');
     });
+
+
+// freeze scrolling when hamburger is open
 
     function noscroll() {
         window.scrollTo( 0, 0);
@@ -90,9 +96,6 @@ $('a[href^="#"]').on('click',function (e) {
     });
 });
 
-/*
-    Gallery component
-*/
 
 // image thumbnail
 function createImage(number) {
@@ -140,6 +143,7 @@ if(isMobile) {
         galleryHolder.appendChild(createImage(i));
     }
 
+    // open big photo basing on thumbnail index (1-16)
 
     $('.gallery__photo').on('click', function() {
         fullphotoDynamicChange.attr('src', '');
@@ -152,6 +156,8 @@ if(isMobile) {
         fullphoto.addClass('portfolio__fullphoto--open');
     });
 
+    // close gallery when clicked anywhere except arrow buttons
+
     fullphoto.on('click', function() {
         if(!(fullphotoButton.is(':focus')))
          {
@@ -160,7 +166,8 @@ if(isMobile) {
 
     });
 
-    //
+    // change image basing on filename (files are named 1-16.jpg)
+    // find the file number in path, and change it with number arg
 
     function changeImage(number) {
         let portfolioImg = fullphotoDynamicChange,
